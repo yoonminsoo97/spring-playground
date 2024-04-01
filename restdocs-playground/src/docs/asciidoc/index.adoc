@@ -1,0 +1,67 @@
+= Rest Docs Playground
+:doctype: book
+:icons: font
+:source-highlighter: highlightjs
+:toc: left
+:toclevels: 2
+
+ifndef::snippets[]
+:snippets: ./build/generated-snippets
+endif::[]
+
+== 1. 게시글
+
+=== 1.1. 게시글 작성
+
+==== 1.1.1. 성공
+
+===== 요청
+
+include::{snippets}/post-controller-test/post-write/http-request.adoc[]
+include::{snippets}/post-controller-test/post-write/request-fields.adoc[]
+
+===== 응답
+
+include::{snippets}/post-controller-test/post-write/http-response.adoc[]
+
+==== 1.1.2. 실패
+
+IMPORTANT: 입력 값이 잘못된 경우
+
+===== 요청
+
+include::{snippets}/post-controller-test/post-write-invalid-input-value/http-request.adoc[]
+include::{snippets}/post-controller-test/post-write-invalid-input-value/request-fields.adoc[]
+
+===== 응답
+
+include::{snippets}/post-controller-test/post-write-invalid-input-value/http-response.adoc[]
+include::{snippets}/post-controller-test/post-write-invalid-input-value/response-fields.adoc[]
+
+=== 1.2. 게시글 상세조회
+
+==== 1.2.1 성공
+
+===== 요청
+
+include::{snippets}/post-controller-test/post-detail/http-request.adoc[]
+include::{snippets}/post-controller-test/post-detail/path-parameters.adoc[]
+
+===== 응답
+
+include::{snippets}/post-controller-test/post-detail/http-response.adoc[]
+include::{snippets}/post-controller-test/post-detail/response-fields.adoc[]
+
+==== 1.2.2 실패
+
+IMPORTANT: 해당 게시글 번호에 대한 게시글이 존재하지 않는 경우
+
+===== 요청
+
+include::{snippets}/post-controller-test/post-detail-not-found-post/http-request.adoc[]
+include::{snippets}/post-controller-test/post-detail-not-found-post/path-parameters.adoc[]
+
+===== 응답
+
+include::{snippets}/post-controller-test/post-detail-not-found-post/http-response.adoc[]
+include::{snippets}/post-controller-test/post-detail-not-found-post/response-fields.adoc[]
