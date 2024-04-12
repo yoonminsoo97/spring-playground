@@ -1,0 +1,26 @@
+package com.playground.commonresponseplayground.domain.post.dto;
+
+import com.playground.commonresponseplayground.domain.post.entity.Post;
+
+import lombok.Getter;
+
+import java.time.LocalDateTime;
+
+@Getter
+public class PostDetailResponse {
+
+    private final Long postNum;
+    private final String title;
+    private final String writer;
+    private final String content;
+    private final LocalDateTime createdAt;
+
+    public PostDetailResponse(Post post) {
+        this.postNum = post.getId();
+        this.title = post.getTitle();
+        this.writer = post.getWriter();
+        this.content = post.getContent();
+        this.createdAt = post.getCreatedAt();
+    }
+
+}
