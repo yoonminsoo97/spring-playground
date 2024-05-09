@@ -54,8 +54,6 @@ public class ApiResponse<T> {
 }
 ```
 
-JSON 형식의 root property 이름이 result로 설정되어 있는데 이는 아래 설정을 적용 했다.
-
 #### 1.2. 응답 데이터가 있는 경우
 
 ##### 1.2.1. 게시글 상세 조회
