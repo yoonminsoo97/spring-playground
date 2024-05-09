@@ -1,6 +1,7 @@
 package com.playground.commonresponseplayground.domain.post.controller;
 
 import com.playground.commonresponseplayground.domain.post.dto.PostDetailResponse;
+import com.playground.commonresponseplayground.domain.post.dto.PostListResponse;
 import com.playground.commonresponseplayground.domain.post.dto.PostWriteRequest;
 import com.playground.commonresponseplayground.domain.post.service.PostService;
 import com.playground.commonresponseplayground.global.common.dto.ApiResponse;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -34,6 +36,13 @@ public class PostController {
     public ResponseEntity<ApiResponse<PostDetailResponse>> postDetail(@PathVariable("postId") final Long postId) {
         PostDetailResponse postDetailResponse = postService.postDetail(postId);
         return ResponseEntity.ok().body(ApiResponse.success(postDetailResponse));
+    }
+
+    @GetMapping
+    public ResponseEntity<ApiResponse<PostListResponse>> postList(@RequestParam("page") int page) {
+        page = page <= 0 ? 0 : page - 1;
+        PostListResponse postListResponse = postService.postList(page);
+        return ResponseEntity.ok().body(ApiResponse.success(postListResponse));
     }
 
 }

@@ -9,14 +9,14 @@ import java.time.LocalDateTime;
 @Getter
 public class PostDetailResponse {
 
-    private final Long postNum;
+    private final Long postId;
     private final String title;
     private final String writer;
     private final String content;
     private final LocalDateTime createdAt;
 
     public PostDetailResponse(Post post) {
-        this.postNum = post.getId();
+        this.postId = post.getId();
         this.title = post.getTitle();
         this.writer = post.getWriter();
         this.content = post.getContent();
