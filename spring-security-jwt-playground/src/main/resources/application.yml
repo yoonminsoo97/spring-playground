@@ -1,0 +1,23 @@
+spring:
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: create-drop
+    properties:
+      hibernate:
+        format_sql: false
+        show_sql: true
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:testdb
+    username: sa
+    password:
+  h2:
+    console:
+      enabled: off
+jwt:
+  secret-key: hello-world-spring-security-with-jwt
+  access-token:
+    expire: 6000000
+  refresh-token:
+    expire: 36000000
