@@ -20,7 +20,7 @@ public class TokenService {
 
     @Transactional
     public void tokenSave(String refreshToken, Member member) {
-        tokenRepository.findByMemberId(member.getId())
+        tokenRepository.findTokenByMemberId(member.getId())
                 .ifPresentOrElse(
                         token -> token.update(refreshToken),
                         () -> tokenRepository.save(Token.builder()
@@ -33,7 +33,7 @@ public class TokenService {
 
     @Transactional
     public void tokenDelete(Long memberId) {
-        Token token = tokenRepository.findByMemberId(memberId)
+        Token token = tokenRepository.findTokenByMemberId(memberId)
                 .orElseThrow();
         tokenRepository.delete(token);
     }
@@ -41,7 +41,7 @@ public class TokenService {
     @Transactional
     public String reissue(String refreshToken) {
         Long memberId = Long.valueOf(jwtManager.getPayload(refreshToken).getSubject());
-        Token token = tokenRepository.findByMemberId(memberId)
+        Token token = tokenRepository.findTokenByMemberIdJoinFetchMember(memberId)
                 .orElseThrow();
         if (!token.getRefreshToken().equals(refreshToken)) {
             throw new RuntimeException("invalid TokenException");
